@@ -842,18 +842,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1526597522}
-    - targetCorrespondingSourceObject: {fileID: 1822785901993169932, guid: a5657262ce8811a4682435c303952af8,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1526597521}
-    - targetCorrespondingSourceObject: {fileID: 1822785901993169932, guid: a5657262ce8811a4682435c303952af8,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1526597520}
-    - targetCorrespondingSourceObject: {fileID: 1822785901993169932, guid: a5657262ce8811a4682435c303952af8,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1526597525}
   m_SourcePrefab: {fileID: 100100000, guid: a5657262ce8811a4682435c303952af8, type: 3}
 --- !u!1 &755932366
 GameObject:
@@ -1289,44 +1277,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 728206897}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1526597520
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1526597519}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1526597521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1526597519}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8c04e431d0238740b696a4a62168319, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rutine: 0
-  cronometro: 0
-  angle: {x: 0, y: 0, z: 0, w: 0}
-  grado: 0
-  target: {fileID: 0}
 --- !u!136 &1526597522
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1350,33 +1300,6 @@ CapsuleCollider:
   m_Height: 1.5
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: -0.1}
---- !u!54 &1526597525
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1526597519}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &1862774828
 GameObject:
   m_ObjectHideFlags: 0

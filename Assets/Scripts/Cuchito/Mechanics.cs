@@ -12,6 +12,7 @@ public class Mechanics : MonoBehaviour
 
     //agro
     public GameObject target;
+    bool attacking = false;
 
 
     public void CuchitoBehaviour()
@@ -19,7 +20,14 @@ public class Mechanics : MonoBehaviour
         if (WawitaDetected())
         {
             
-            CuchitoAgressive();
+            if (DistanceToWawita() > 1 && !attacking)
+            {
+                CuchitoChase();
+            }
+            else
+            {
+                CuchitoAttack();
+            }
         }
         else
         {
@@ -29,14 +37,17 @@ public class Mechanics : MonoBehaviour
     }
     bool WawitaDetected()
     {
-        if (Vector3.Distance(transform.position, target.transform.position) <= 3)
+        if (DistanceToWawita() <= 3)
         {
             return true;
         }
-        else { return false; }
+        return false;
     }
     void CuchitoIdle()
     {
+        attacking = false;
+        ani.SetBool("attack", false);
+        ani.SetBool("walk", false);
         ani.SetBool("run", false);
         cronometro += 1 * Time.deltaTime;
         if (cronometro >= 4)
@@ -63,7 +74,7 @@ public class Mechanics : MonoBehaviour
         }
     }
     
-    void CuchitoAgressive()
+    void CuchitoChase()
     {
         var lookPos = target.transform.position - transform.position;
         lookPos.y = 0;
@@ -71,7 +82,21 @@ public class Mechanics : MonoBehaviour
         transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 3);
         ani.SetBool("walk", false);
         ani.SetBool("run", true);
+        ani.SetBool("attack", false);
+        attacking = false;
         transform.Translate(Vector3.forward * 2 * Time.deltaTime);
+    }
+    void CuchitoAttack()
+    {
+        ani.SetBool("walk", false);
+        ani.SetBool("run", false);
+        ani.SetBool("attack", true);
+        attacking = true;
+    }
+
+    float DistanceToWawita()
+    {
+        return Vector3.Distance(transform.position, target.transform.position);
     }
 
     // Start is called before the first frame update
