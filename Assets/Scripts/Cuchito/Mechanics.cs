@@ -9,6 +9,8 @@ public class Mechanics : MonoBehaviour
     Animator ani;
     public Quaternion angle;
     public float grado;
+    public int walk_velocity = 1;
+    public int run_velocity = 2;
 
     //agro
     public GameObject target;
@@ -24,7 +26,7 @@ public class Mechanics : MonoBehaviour
             {
                 CuchitoChase();
             }
-            else
+            else 
             {
                 CuchitoAttack();
             }
@@ -50,7 +52,7 @@ public class Mechanics : MonoBehaviour
         ani.SetBool("walk", false);
         ani.SetBool("run", false);
         cronometro += 1 * Time.deltaTime;
-        if (cronometro >= 4)
+        if (cronometro >= 3)
         {
             rutine = Random.Range(0, 2);
             cronometro = 0;
@@ -66,9 +68,9 @@ public class Mechanics : MonoBehaviour
                 rutine++;
                 break;
             case 2:
-
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, angle, 0.5f); //rotacion
-                transform.Translate(Vector3.forward * 1 * Time.deltaTime);//movimiento y velocidad hacia adelante
+                //walking idle
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, angle, 0.5f); //rotate
+                transform.Translate(Vector3.forward * walk_velocity * Time.deltaTime);//velocity and move forward
                 ani.SetBool("walk", true);
                 break;
         }
@@ -76,15 +78,12 @@ public class Mechanics : MonoBehaviour
     
     void CuchitoChase()
     {
-        var lookPos = target.transform.position - transform.position;
-        lookPos.y = 0;
-        var rotation = Quaternion.LookRotation(lookPos);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 3);
+        RotateToWawita();
         ani.SetBool("walk", false);
         ani.SetBool("run", true);
         ani.SetBool("attack", false);
         attacking = false;
-        transform.Translate(Vector3.forward * 2 * Time.deltaTime);
+        transform.Translate(Vector3.forward * run_velocity * Time.deltaTime);
     }
     void CuchitoAttack()
     {
@@ -92,11 +91,33 @@ public class Mechanics : MonoBehaviour
         ani.SetBool("run", false);
         ani.SetBool("attack", true);
         attacking = true;
+        /*if (DistanceToWawita() > 1)
+        {
+            attacking = false;
+        }
+        else
+        {
+            attacking = true;
+        }*/
     }
 
     float DistanceToWawita()
     {
         return Vector3.Distance(transform.position, target.transform.position);
+    }
+
+    void RotateToWawita()
+    {
+        //mirar al wawita
+        var lookPos = target.transform.position - transform.position;
+        lookPos.y = 0;
+        var rotation = Quaternion.LookRotation(lookPos);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 3);
+    }
+    public void CancelAttackAnimation()
+    {
+        ani.SetBool("attack", false);
+        attacking = false;
     }
 
     // Start is called before the first frame update
