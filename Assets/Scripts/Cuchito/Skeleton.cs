@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Skeleton : MonoBehaviour
+public class Mechanics : MonoBehaviour
 {
     int rutine;
     float cronometro;
@@ -12,8 +12,8 @@ public class Skeleton : MonoBehaviour
     public float walk_velocity;
     public float run_velocity;
     public float agro_area = 2;
-    public FieldOfView script_FieldOfView;
-    bool playerSeen;
+    //public FieldOfView script_FieldOfView;
+    //bool playerSeen;
 
     //agro
     public GameObject target;
@@ -22,7 +22,7 @@ public class Skeleton : MonoBehaviour
 
     void CuchitoBehaviour()
     {
-        if (WawitaDetected() || playerSeen)
+        if (WawitaDetected() )
         {
             
             if (DistanceToWawita() > 1 && !attacking)
@@ -132,12 +132,14 @@ public class Skeleton : MonoBehaviour
     {
         ani = GetComponent<Animator>();
         target = GameObject.Find("Player");
+        //script_FieldOfView = GetComponent<FieldOfView>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        playerSeen = script_FieldOfView.canSeePlayer;
+        //playerSeen = script_FieldOfView.canSeePlayer;
         CuchitoBehaviour();
 
     }
