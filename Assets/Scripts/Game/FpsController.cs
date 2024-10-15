@@ -31,6 +31,7 @@ public class FpsController : MonoBehaviour
     public const string mouseInputXName = "Mouse X";
     public const string mouseInputYName = "Mouse Y";
     public static Vector3 position;
+    public static bool canMove = true;
     
     
     private const string horizontalInputName = "Horizontal";
@@ -60,6 +61,7 @@ public class FpsController : MonoBehaviour
 
     private void Update()
     {
+        if(!canMove) return;
         Movement();
         CameraMovement();
         position = transform.position;
@@ -136,4 +138,7 @@ public class FpsController : MonoBehaviour
         transform.eulerAngles = eulerRotation;
     }
 
+    public static void CanMove(bool state){
+        canMove = state;
+    }
 }

@@ -9,17 +9,15 @@ public class Interact : MonoBehaviour
     private float interactionRange = 1.5f;
 
     void Update(){
-        if(Input.GetKey(KeyCode.E)){
-            Ray ray = new(transform.position, transform.forward);
-            if (Physics.Raycast(ray, out RaycastHit hit, interactionRange)){
-                if(hit.transform.TryGetComponent(out IInteractive interactive)){
+        Ray ray = new(transform.position, transform.forward);
+        if (Physics.Raycast(ray, out RaycastHit hit, interactionRange)){
+            if(hit.transform.TryGetComponent(out IInteractive interactive)){
+                interactive.InteractText();
+                if(Input.GetKey(KeyCode.E)){
                     interactive.Interact();
                 }
             }
-        }
-    }
 
-    void DebugRay(){
-        Debug.DrawLine(transform.position, transform.position +  transform.forward, Color.red);
+        }
     }
 }

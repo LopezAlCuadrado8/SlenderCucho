@@ -4,15 +4,10 @@ using UnityEngine.UI;
 
 public class ChangingImage : MonoBehaviour
 {
-    [Header("Propiedades")]
-    [SerializeField]
-    private float changeImageDelay = 1.5f;
-
     [Header("Imagenes")]
     [SerializeField]
     private List<Sprite> Sprites;
     
-
     private Image image;
     void Start(){
         image = GetComponent<Image>();

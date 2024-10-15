@@ -141,4 +141,8 @@ public class Skeleton : MonoBehaviour
         CuchitoBehaviour();
 
     }
+    void GameOverSequence(){
+        FpsController.CanMove(false);
+        GameOver.GameOverSequence();
+    }
 }

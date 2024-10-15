@@ -143,4 +143,9 @@ public class Mechanics : MonoBehaviour
         CuchitoBehaviour();
 
     }
+
+    void GameOverSequence(){
+        FpsController.CanMove(false);
+        GameOver.GameOverSequence();
+    }
 }

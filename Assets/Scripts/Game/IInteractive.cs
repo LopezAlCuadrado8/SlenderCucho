@@ -5,4 +5,5 @@ using UnityEngine;
 public interface  IInteractive
 {
     public abstract void Interact();
+    public abstract void InteractText();
 }
