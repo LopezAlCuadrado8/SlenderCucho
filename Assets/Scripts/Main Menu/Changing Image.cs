@@ -8,8 +8,11 @@ public class ChangingImage : MonoBehaviour
     [SerializeField]
     private List<Sprite> Sprites;
     
+
     private Image image;
     void Start(){
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         image = GetComponent<Image>();
     }
 

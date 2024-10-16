@@ -10,6 +10,7 @@ public class Collectible : MonoBehaviour, IInteractive
 
     public void Interact()
     {
+        CollectiblesDisplay.IncreaseCollectiblesAmount();
         DisplayText.ChangeText("");
         Destroy(gameObject);
     }

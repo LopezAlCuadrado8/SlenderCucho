@@ -3,14 +3,14 @@ using UnityEngine;
 public class GameOver : MonoBehaviour
 {
     [SerializeField]
-    private GameObject fadeOut;
+    private GameObject gameOverSequence;
 
-    private static GameObject fadeOutObject;
+    private static GameObject gameOverSequenceObject;
 
     void Start(){
-        fadeOutObject = fadeOut;
+        gameOverSequenceObject = gameOverSequence;
     }
     public static void GameOverSequence(){
-        fadeOutObject.SetActive(true);
+        gameOverSequenceObject.SetActive(true);
     }
 }

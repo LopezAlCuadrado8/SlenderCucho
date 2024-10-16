@@ -37,6 +37,9 @@ public class FpsController : MonoBehaviour
     private const string horizontalInputName = "Horizontal";
     private const string verticalInputName = "Vertical";
 
+
+    private Vector3 initialScale;
+    private float initialYPosition;
     private CharacterController playerController;
     private GameObject player;
     private Transform playerTransform;
@@ -51,6 +54,9 @@ public class FpsController : MonoBehaviour
 
     private void Start()
     {
+        initialYPosition = transform.parent.position.y;
+        initialScale = transform.localScale;
+        canMove = true;
         maxStamina = stamina;
 
         player = transform.parent.gameObject;
@@ -64,6 +70,7 @@ public class FpsController : MonoBehaviour
         if(!canMove) return;
         Movement();
         CameraMovement();
+        Crouch();
         position = transform.position;
     }
 
@@ -136,6 +143,17 @@ public class FpsController : MonoBehaviour
         Vector3 eulerRotation = transform.eulerAngles;
         eulerRotation.x = value;
         transform.eulerAngles = eulerRotation;
+    }
+
+    void Crouch(){
+        
+        if(Input.GetKey(KeyCode.LeftControl)){
+            transform.parent.localScale = new Vector3(0.1f,0.1f,0.1f);
+        }else{
+            transform.parent.localScale = initialScale;
+            transform.parent.position = new Vector3(transform.parent.position.x, initialYPosition, transform.parent.position.z);
+        }
+
     }
 
     public static void CanMove(bool state){
